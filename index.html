@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diwali Wishes</title>
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html,body{
+        width:100%;
+        height:100%;
+        overflow:hidden;
+        background:#000;
+        font-family:'Poppins',sans-serif;
+    }
+
+    .slide{
+        position:absolute;
+        top:0;left:0;
+        width:100%;height:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        opacity:0;
+        transition:opacity 1s ease;
+        background-size:cover;
+        background-position:center;
+    }
+    .active{opacity:1;}
+
+    /* Backgrounds */
+    #slide1{background:url('coverbg.png') no-repeat center/cover;}
+    #slide2,#slide3,#slide4,#slide5,#slide6{
+        background:url('bg2.png') no-repeat center/cover;
+    }
+
+    /* White fully opaque box for text */
+    .text-box{
+        background: #ffffff; /* fully opaque */
+        padding: 20px 30px;
+        border-radius: 15px;
+        max-width: 80%;
+        text-align:center;
+        color:#000;
+    }
+
+    /* Cover page */
+    #slide1 img{
+        max-width:846px;
+        max-height:1024px;
+        height:auto;
+        width:auto;
+    }
+
+    /* Text slide */
+    #slide2 p{
+        font-size:2rem;
+        font-weight:600;
+        animation:textAppear 2.5s forwards;
+    }
+
+    @keyframes textAppear{
+        from{filter:blur(10px);opacity:0;transform:scale(1.1);}
+        to{filter:blur(0);opacity:1;transform:scale(1);}
+    }
+
+    /* Ganesh ji */
+    #slide3 img{
+        width:auto;
+        height:auto;
+        max-width:600px;  /* 2cm bigger */
+        max-height:600px; /* 2cm bigger */
+    }
+
+    /* Text after Ganesh ji */
+    #slide4 p{
+        font-size:1.8rem;
+        font-weight:500;
+    }
+
+    /* Lakshmi ji */
+    #slide5{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+    }
+    #slide5 img{
+        max-width:700px;
+        max-height:700px;
+        margin-bottom:20px;
+    }
+    #slide5 p{
+        font-size:1.2rem;
+    }
+
+    /* Final wish slide */
+    #slide6{
+        padding:30px;
+        line-height:1.8;
+        white-space:pre-line;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    #slide6 p{
+        font-size:1.8rem; /* bigger font for visibility */
+    }
+</style>
+</head>
+<body>
+
+<!-- Slide 1 -->
+<div class="slide active" id="slide1">
+    <img src="coverpage.png" alt="Cover Page">
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="slide2">
+    <div class="text-box">
+        <p>As per the rituals, starting with Ganesh ji.</p>
+    </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="slide3">
+    <img src="ganeshji.png" alt="Ganesh Ji">
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" id="slide4">
+    <div class="text-box">
+        <p>Do I forget something? Oh yeah... here it is.</p>
+    </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" id="slide5">
+    <img src="lakshmiji.png" alt="Lakshmi Ji">
+    <div class="text-box">
+        <p>You didn't send your pic so I had to pick it from Pin.</p>
+    </div>
+</div>
+
+<!-- Slide 6 (Final Wish) -->
+<div class="slide" id="slide6">
+    <div class="text-box">
+        <p>
+The festival of glowing lights and joy.  
+A day as warm as your presence in my life.  
+With the shining diyas and gleam of fireworks.  
+Uniting everyone with love and care.  
+Each wish I make, each flame I see.  
+Reminds me to have this moment once with you.  
+But a long wait till then,  
+Holding up on each other we'll find a way.  
+Till then with every wish with every prayer.  
+All I'll think about is you,  
+
+Wishing you a very warm and joyous Dipawali Ishu ji. 🩷🎀
+        </p>
+    </div>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+
+function changeSlide(){
+    slides[current].classList.remove('active');
+    current++;
+    if(current >= slides.length) current = 0;
+    slides[current].classList.add('active');
+}
+
+// Timing: first 5 slides = 5s each, last = 15s
+function runSlides(){
+    changeSlide();
+    let delay = (current === slides.length - 1) ? 30000 : 5000;
+    setTimeout(runSlides, delay);
+}
+
+setTimeout(runSlides, 5000);
+</script>
+
+</body>
+</html>
